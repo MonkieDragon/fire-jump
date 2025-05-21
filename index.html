@@ -119,11 +119,25 @@
         <!-- Builtin injector for injecting google analytics code -->
         
         <script>
-        const canvas = document.getElementById("canvas");
-        canvas.addEventListener("touchstart", e => {
+          const canvas = document.getElementById("canvas");
+        
+          const enterFullscreen = () => {
+            const el = canvas; // or try document.documentElement
+            if (el.requestFullscreen) {
+              el.requestFullscreen().then(() => {
+                console.log("✅ Fullscreen entered");
+              }).catch(err => {
+                console.warn("❌ Fullscreen failed:", err);
+              });
+            } else {
+              console.warn("❌ Fullscreen API not supported");
+            }
+          };
+        
+          canvas.addEventListener("touchstart", e => {
             e.preventDefault();
-            canvas.requestFullscreen?.().catch(() => {});
-        }, { passive: false });
+            enterFullscreen();
+          }, { passive: false });
         </script>
 
     </body>
