@@ -120,9 +120,11 @@
         
         <script>
           const canvas = document.getElementById("canvas");
-        
+
           const enterFullscreen = () => {
-            const el = canvas; // or try document.documentElement
+            // const el = canvas; // or try document.documentElement
+            const el = document.documentElement;
+
             if (el.requestFullscreen) {
               el.requestFullscreen().then(() => {
                 console.log("✅ Fullscreen entered");
